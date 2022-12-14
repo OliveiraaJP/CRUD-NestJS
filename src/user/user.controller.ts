@@ -7,7 +7,7 @@ import { UsuarioRepository } from './user.repository';
 export class UserController {
   constructor(private readonly usuarioRepo: UsuarioRepository) {}
 
-  @Post()
+  @Post('/signup')
   async createUser(@Body() userData: CreateUserDTO) {
     const userEntity = new UserEntity();
     userEntity.email = userData.email;
