@@ -11,8 +11,8 @@ export class UserController {
   async createUser(@Body() userData: CreateUserDTO) {
     const userEntity = new UserEntity();
     userEntity.email = userData.email;
-    userData.name = userData.name;
-    userData.password = userData.password;
+    userEntity.name = userData.name;
+    userEntity.password = userData.password;
     return userData;
   }
 }

@@ -3,7 +3,7 @@ import { UserController } from './user.controller';
 import { UsuarioRepository } from './user.repository';
 
 @Module({
-    controllers: [UserController],
-    providers: [UsuarioRepository],
+  controllers: [UserController],
+  providers: [UsuarioRepository],
 })
 export class UserModule {}
