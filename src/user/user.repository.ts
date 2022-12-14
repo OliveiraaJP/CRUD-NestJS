@@ -7,6 +7,6 @@ export class UsuarioRepository {
   constructor(private db: PrismaService) {}
 
   async create(user: UserEntity) {
-    this.db.user.create({ data: user });
+    await this.db.user.create({ data: user });
   }
 }

@@ -5,7 +5,7 @@ import { UsuarioRepository } from './user.repository';
 
 @Controller('/users')
 export class UserController {
-  constructor(private readonly usuarioRepo: UsuarioRepository) {}
+  constructor(private readonly userRepo: UsuarioRepository) {}
 
   @Post('/signup')
   async createUser(@Body() userData: CreateUserDTO) {
@@ -13,6 +13,7 @@ export class UserController {
     userEntity.email = userData.email;
     userEntity.name = userData.name;
     userEntity.password = userData.password;
+    await this.userRepo.create(userEntity);
     return userData;
   }
 }
