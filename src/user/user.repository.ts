@@ -15,6 +15,11 @@ export class UserRepository {
   }
 
   async getAll() {
-    return await this.db.user.findMany({});
+    return await this.db.user.findMany({
+      select: {
+        email: true,
+        name: true,
+      },
+    });
   }
 }
