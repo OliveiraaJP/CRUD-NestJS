@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CreateUserDTO } from './dto/createUser.dto';
 import { UserEntity } from './user.entity';
 import { UserRepository } from './user.repository';
@@ -15,5 +15,11 @@ export class UserController {
     userEntity.password = userData.password;
     await this.userRepo.create(userEntity);
     return userData;
+  }
+
+  @Get()
+  async getUsers() {
+    const users = this.userRepo.getAll();
+    return users;
   }
 }
