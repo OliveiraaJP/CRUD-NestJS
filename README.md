@@ -25,7 +25,7 @@ Uma aplicação que faz um CRUD de usuários usando NestJS + PrismaORM
 ## 🗺️ Roadmap
 
 - Create ✅
-- Read ❌
+- Read ✅
 - Update ❌
 - Delete ❌
 - 'Dockerizar' a aplicação ❌
