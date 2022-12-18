@@ -2,10 +2,14 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CreateUserDTO } from './dto/createUser.dto';
 import { UserEntity } from './user.entity';
 import { UserRepository } from './user.repository';
+import { UserUtils } from './user.utils';
 
 @Controller('/users')
 export class UserController {
-  constructor(private readonly userRepo: UserRepository) {}
+  constructor(
+    private readonly userRepo: UserRepository,
+    private readonly userUtils: UserUtils,
+  ) {}
 
   @Post('/signup')
   async createUser(@Body() userData: CreateUserDTO) {
@@ -19,7 +23,8 @@ export class UserController {
 
   @Get()
   async getUsers() {
-    const users = this.userRepo.getAll();
-    return users;
+    const users = await this.userRepo.getAll();
+    const hashUsers = this.userUtils.filterEmails(users);
+    return hashUsers;
   }
 }
